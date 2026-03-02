@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+    --gradient-start: #dcfce7;
+    --gradient-mid: #f0fdf4;
+    --gradient-end: #ecfdf5;
+    --header-bg: #16a34a;
+    --header-border: #15803d;
+  }
+
+  body {
+    @apply antialiased;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end));
+    background-size: 400% 400%;
+    animation: gradientShift 20s ease infinite;
+    min-height: 100vh;
+    position: relative;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+      radial-gradient(circle at 20% 50%, rgba(34, 197, 94, 0.07) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(16, 185, 129, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 40% 20%, rgba(5, 150, 105, 0.06) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  @keyframes gradientShift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .content-wrapper {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+@layer components {
+  /* ─── Layout ─── */
+  .container-app {
+    @apply mx-auto w-full max-w-6xl px-4;
+  }
+
+  /* ─── Card ─── */
+  .card {
+    @apply rounded-2xl border border-white/40 bg-white/70 backdrop-blur-md shadow-lg;
+  }
+
+  .card-header {
+    @apply border-b border-green-100/60 px-6 py-5;
+  }
+
+  .card-body {
+    @apply px-6 py-6 text-slate-800;
+  }
+
+  /* ─── Buttons ─── */
+  .btn {
+    @apply inline-flex items-center justify-center rounded-xl px-5 py-2.5 text-sm font-semibold transition-all duration-200;
+  }
+
+  .btn-primary {
+    @apply btn bg-green-600 text-white shadow-md hover:bg-green-700 hover:shadow-lg hover:scale-[1.02] active:scale-100;
+  }
+
+  .btn-secondary {
+    @apply btn bg-white text-slate-700 ring-1 ring-inset ring-slate-200 shadow-sm hover:bg-green-50 hover:ring-green-300 hover:shadow-md;
+  }
+
+  .btn-danger {
+    @apply btn bg-rose-500 text-white hover:bg-rose-600 hover:shadow-lg;
+  }
+
+  /* ─── Form Elements ─── */
+  .input {
+    @apply w-full rounded-xl border border-slate-200 bg-white/90 px-4 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 shadow-sm outline-none transition-all duration-200 focus:border-green-400 focus:ring-4 focus:ring-green-100;
+  }
+
+  .select {
+    @apply input bg-white text-slate-800;
+  }
+
+  .textarea {
+    @apply input;
+  }
+
+  /* ─── Header / Footer ─── */
+  .header-footer {
+    background: rgba(22, 163, 74, 0.93);
+    border-bottom: 1px solid var(--header-border);
+    backdrop-filter: blur(16px);
+  }
+
+  .text-on-dark {
+    @apply text-white;
+  }
+
+  .text-on-dark-secondary {
+    @apply text-green-100;
+  }
+
+  /* ─── Status Badges ─── */
+  .badge-green {
+    @apply inline-flex items-center rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-semibold text-green-700;
+  }
+
+  .badge-yellow {
+    @apply inline-flex items-center rounded-full bg-yellow-100 px-2.5 py-0.5 text-xs font-semibold text-yellow-700;
+  }
+
+  .badge-red {
+    @apply inline-flex items-center rounded-full bg-rose-100 px-2.5 py-0.5 text-xs font-semibold text-rose-700;
+  }
+
+  .badge-slate {
+    @apply inline-flex items-center rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-slate-600;
+  }
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
