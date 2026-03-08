@@ -50,7 +50,18 @@ export default function SignupPage() {
 
       navigate('/cart', { replace: true })
     } catch (err) {
-      setError('Signup failed')
+      if (err.response?.data) {
+        // Extract all error messages from the response data object
+        const errorMessages = Object.entries(err.response.data)
+          .map(([field, msgs]) => {
+            const fieldName = field.charAt(0).toUpperCase() + field.slice(1).replace('_', ' ');
+            return typeof msgs === 'string' ? msgs : `${fieldName}: ${msgs[0]}`;
+          })
+          .join(' | ');
+        setError(errorMessages || 'Signup failed');
+      } else {
+        setError('Signup failed');
+      }
     } finally {
       setLoading(false)
     }

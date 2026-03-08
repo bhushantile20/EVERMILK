@@ -6,6 +6,7 @@ from django.utils import timezone
 import uuid
 from .models import Payment
 from .serializers import PaymentSerializer, CreatePaymentSerializer, VerifyPaymentSerializer
+from .telegram_service import send_subscription_activated_message
 from orders.models import Order
 
 
@@ -69,6 +70,8 @@ def verify_payment(request):
             payment.mark_as_failed()
         else:
             payment.mark_as_completed()
+            # Notify user via Telegram (no-op if not configured)
+            send_subscription_activated_message(request.user, payment.order)
         
         return Response({
             'message': 'Payment verified successfully',

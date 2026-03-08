@@ -148,3 +148,10 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:3000",
     "http://127.0.0.1:5173",
 ]
+
+# ── Razorpay (optional – set in .env to enable) ──
+RAZORPAY_KEY_ID = config('RAZORPAY_KEY_ID', default='')
+RAZORPAY_KEY_SECRET = config('RAZORPAY_KEY_SECRET', default='')
+
+# ── Telegram Notifications (optional – set in .env to enable) ──
+TELEGRAM_BOT_TOKEN = config('TELEGRAM_BOT_TOKEN', default='')

@@ -10,6 +10,7 @@ class User(AbstractUser):
     
     email = models.EmailField(unique=True)
     phone_number = models.CharField(max_length=20, blank=True, null=True)
+    telegram_chat_id = models.CharField(max_length=100, blank=True, null=True)
     role = models.CharField(max_length=10, choices=ROLE_CHOICES, default='customer')
     is_active = models.BooleanField(default=True)
     date_joined = models.DateTimeField(auto_now_add=True)

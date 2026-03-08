@@ -44,13 +44,14 @@ class Product(models.Model):
         return f"{self.name} ({self.category.name})"
     
     def get_price(self, plan_type):
-        price_map = {
-            'one_time': self.one_time_price,
-            'monthly': self.monthly_price,
-            'quarterly': self.quarterly_price,
-            'yearly': self.yearly_price,
+        base_price = self.one_time_price
+        multipliers = {
+            'one_time': 1,
+            'monthly': 30,
+            'quarterly': 90,
+            'yearly': 365,
         }
-        return price_map.get(plan_type, 0)
+        return base_price * multipliers.get(plan_type, 1)
     
     def is_in_stock(self, quantity=1):
         return self.stock_quantity >= quantity

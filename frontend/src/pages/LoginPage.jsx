@@ -43,7 +43,22 @@ export default function LoginPage() {
       const from = location.state?.from?.pathname
       navigate(from || '/cart', { replace: true })
     } catch (err) {
-      setError(err?.response?.data?.error || 'Login failed')
+      if (err.response?.data) {
+        // Handle DRF standard validation error format
+        if (err.response.data.error) {
+          setError(typeof err.response.data.error === 'string' ? err.response.data.error : 'Login failed');
+        } else {
+          const errorMessages = Object.entries(err.response.data)
+            .map(([field, msgs]) => {
+              const fieldName = field.charAt(0).toUpperCase() + field.slice(1).replace('_', ' ');
+              return typeof msgs === 'string' ? msgs : `${fieldName === 'Non field errors' ? '' : fieldName + ': '}${msgs[0]}`;
+            })
+            .join(' | ');
+          setError(errorMessages || 'Login failed');
+        }
+      } else {
+        setError('Login failed');
+      }
     } finally {
       setLoading(false)
     }

@@ -22,10 +22,14 @@ export function RequireAdmin() {
 
   const role = (user?.role || '').toLowerCase()
   const isAdminRole = role === 'admin' || role === 'staff'
-  const isKnownSuperuser =
-    user?.email === 'sahildhuri216@gmail.com' || user?.username === 'sahildhuri216'
 
-  const isAdmin = isAdminRole || isKnownSuperuser
+  // DRF check - sometimes superusers might not have the 'role' explicitly set to 'admin' 
+  // depending on how createsuperuser operates, but they are is_staff or is_superuser
+  const isDjangoAdmin = user?.is_staff || user?.is_superuser
+
+  // Allow either explicit admin role, or Django staff/superuser privileges
+  const isAdmin = isAdminRole || isDjangoAdmin
+
   if (!isAdmin) {
     return <Navigate to="/" replace />
   }

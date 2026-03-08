@@ -17,27 +17,24 @@ export default function Navbar() {
   }
 
   const linkClass = ({ isActive }) =>
-    `rounded-xl px-4 py-2 text-sm font-semibold transition-all duration-200 ${isActive
-      ? 'bg-white/25 text-white shadow-md backdrop-blur-md'
-      : 'text-green-50 hover:bg-white/15 hover:text-white'
+    `px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-300 ${isActive
+      ? 'bg-green-50 text-green-700 shadow-sm'
+      : 'text-gray-600 hover:bg-gray-50 hover:text-green-700'
     }`
 
   return (
-    <header className="header-footer sticky top-0 z-50 shadow-lg">
-      <div className="container-app flex items-center justify-between py-3.5">
+    <header className="sticky top-0 z-50 w-full bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all">
+      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2.5 group">
-          <div className="grid h-10 w-10 place-items-center rounded-xl bg-white/20 text-base font-extrabold text-white backdrop-blur-md transition-all duration-200 group-hover:bg-white/30 group-hover:scale-105 shadow-inner">
-            🥛
-          </div>
-          <div className="leading-tight">
-            <div className="text-base font-extrabold tracking-tight text-white">Milkman</div>
-            <div className="text-xs text-green-100">Farm-fresh milk, daily</div>
+        <Link to="/" className="flex items-center gap-3 group">
+          <div className="flex flex-col">
+            <span className="text-2xl font-black tracking-tighter text-gray-900 leading-none mb-0.5">EVER MILK</span>
+            <span className="text-[10px] font-bold text-green-700 uppercase tracking-widest leading-none">Fresh Daily</span>
           </div>
         </Link>
 
-        {/* Nav links */}
-        <nav className="flex items-center gap-1.5">
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex items-center gap-2">
           <NavLink to="/" className={linkClass} end>
             Home
           </NavLink>
@@ -45,37 +42,39 @@ export default function Navbar() {
           <NavLink to="/cart" className={linkClass}>
             <span className="flex items-center gap-2">
               Cart
-              <span className="rounded-full bg-white px-2 py-0.5 text-xs font-bold text-green-700 shadow">
-                {cartCount}
-              </span>
+              {cartCount > 0 && (
+                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-green-700 text-[10px] font-bold text-white shadow-sm">
+                  {cartCount}
+                </span>
+              )}
             </span>
           </NavLink>
 
           {user ? (
-            <>
+            <div className="flex items-center gap-2 ml-4 pl-4 border-l border-gray-200">
               <NavLink to="/dashboard/orders" className={linkClass}>
-                Orders
+                Dashboard
               </NavLink>
               <button
                 type="button"
                 onClick={onLogout}
-                className="ml-1 rounded-xl bg-white/15 px-4 py-2 text-sm font-semibold text-white ring-1 ring-inset ring-white/30 transition-all duration-200 hover:bg-white/25 hover:shadow-md"
+                className="px-4 py-2 text-sm font-semibold text-gray-600 hover:text-rose-600 transition-colors"
               >
                 Logout
               </button>
-            </>
+            </div>
           ) : (
-            <>
-              <NavLink to="/login" className={linkClass}>
-                Login
+            <div className="flex items-center gap-3 ml-4 pl-4 border-l border-gray-200">
+              <NavLink to="/login" className="text-sm font-semibold text-gray-600 hover:text-green-700 transition-colors">
+                Log in
               </NavLink>
               <NavLink
                 to="/signup"
-                className="ml-1 rounded-xl bg-white px-4 py-2 text-sm font-bold text-green-700 shadow-md transition-all duration-200 hover:bg-green-50 hover:shadow-lg hover:scale-[1.02]"
+                className="btn-primary py-2 px-5 text-sm"
               >
                 Sign up
               </NavLink>
-            </>
+            </div>
           )}
         </nav>
       </div>
