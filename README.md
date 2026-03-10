@@ -84,4 +84,38 @@
 
 - `backend/`: Django project containing core logic, database models, and API endpoints. 
 - `frontend/`: React application containing the user interface and admin dashboard.
-- `postman_collections.json`: API testing collection for Postman.
+
+---
+
+## 🔄 Admin Registration & Login Flow
+
+The following diagram illustrates the interaction between the React Frontend and the Django Backend during administrator account creation and subsequent login.
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant Frontend as React Frontend
+    participant Backend as Django API
+    participant DB as SQLite Database
+
+    Note over User, Frontend: Registration Phase
+    User->>Frontend: Fills Signup Form (role: admin)
+    Frontend->>Backend: POST /api/auth/register/ (data + role='admin')
+    Backend->>Backend: Validate Data
+    Backend->>DB: create_superuser()
+    DB-->>Backend: User created
+    Backend->>Backend: Generate JWT Tokens (Access/Refresh)
+    Backend-->>Frontend: 201 Created (Token + User Data)
+    Frontend->>Frontend: Store Token in Redux
+    Frontend-->>User: Redirect to /admin/analytics
+
+    Note over User, Frontend: Login Phase (Subsequent sessions)
+    User->>Frontend: Enters Credentials
+    Frontend->>Backend: POST /api/auth/login/
+    Backend->>DB: Authenticate User
+    DB-->>Backend: Valid User
+    Backend->>Backend: Generate JWT Tokens
+    Backend-->>Frontend: 200 OK (Token + User Profile)
+    Frontend->>Frontend: Verify role === 'admin' (RequireAdmin Guard)
+    Frontend-->>User: Access Granted to /admin/*
+```
