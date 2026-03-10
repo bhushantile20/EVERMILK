@@ -19,6 +19,7 @@ import AdminOrdersPage from './pages/admin/AdminOrdersPage'
 import AdminPaymentsPage from './pages/admin/AdminPaymentsPage'
 import AdminCustomersPage from './pages/admin/AdminCustomersPage'
 import AdminAnalyticsPage from './pages/admin/AdminAnalyticsPage'
+import AdminSignupPage from './pages/admin/AdminSignupPage'
 
 export default function App() {
   return (
@@ -38,6 +39,7 @@ export default function App() {
       </Route>
 
       <Route path="/admin/login" element={<AdminLoginPage />} />
+      <Route path="/admin/signup" element={<AdminSignupPage />} />
       <Route element={<RequireAdmin />}>
         <Route element={<AdminLayout />}>
           <Route path="/admin/products" element={<AdminProductsPage />} />

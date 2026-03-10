@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { api } from '../../app/apiClient'
 import { useAppDispatch } from '../../app/hooks'
 import { setSession } from '../../features/auth/authSlice'
@@ -94,6 +94,14 @@ export default function AdminLoginPage() {
                 {loading ? 'Authenticating...' : 'Sign in to Admin'}
               </button>
             </form>
+            <div className="mt-8 pt-6 border-t border-slate-100 text-center">
+              <p className="text-sm font-medium text-slate-500">
+                New administrator?{' '}
+                <Link to="/admin/signup" className="font-bold text-slate-900 hover:underline">
+                  Register here
+                </Link>
+              </p>
+            </div>
           </div>
         </div>
 
