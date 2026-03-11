@@ -8,6 +8,7 @@ import CartPage from './pages/CartPage'
 import CheckoutPage from './pages/CheckoutPage'
 import OrdersPage from './pages/OrdersPage'
 import OrderDetailPage from './pages/OrderDetailPage'
+import SubscribePlan from './pages/SubscribePlan'
 import NotFoundPage from './pages/NotFoundPage'
 import { RequireAdmin, RequireAuth } from './routes/guards'
 
@@ -20,6 +21,8 @@ import AdminPaymentsPage from './pages/admin/AdminPaymentsPage'
 import AdminCustomersPage from './pages/admin/AdminCustomersPage'
 import AdminAnalyticsPage from './pages/admin/AdminAnalyticsPage'
 import AdminSignupPage from './pages/admin/AdminSignupPage'
+import AdminSubscriptions from './pages/admin/AdminSubscriptions'
+import AdminSubscriptionDetail from './pages/admin/AdminSubscriptionDetail'
 
 export default function App() {
   return (
@@ -33,6 +36,7 @@ export default function App() {
 
         <Route element={<RequireAuth />}>
           <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/subscribe/:id" element={<SubscribePlan />} />
           <Route path="/dashboard/orders" element={<OrdersPage />} />
           <Route path="/dashboard/orders/:id" element={<OrderDetailPage />} />
         </Route>
@@ -47,6 +51,8 @@ export default function App() {
           <Route path="/admin/orders" element={<AdminOrdersPage />} />
           <Route path="/admin/payments" element={<AdminPaymentsPage />} />
           <Route path="/admin/customers" element={<AdminCustomersPage />} />
+          <Route path="/admin/subscriptions" element={<AdminSubscriptions />} />
+          <Route path="/admin/subscriptions/:id" element={<AdminSubscriptionDetail />} />
           <Route path="/admin/analytics" element={<AdminAnalyticsPage />} />
         </Route>
       </Route>

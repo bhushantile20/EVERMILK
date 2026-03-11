@@ -24,6 +24,7 @@ export default function AdminLayout() {
             <NavLink to="/admin/orders" className={linkClass}>Orders</NavLink>
             <NavLink to="/admin/payments" className={linkClass}>Payments</NavLink>
             <NavLink to="/admin/customers" className={linkClass}>Customers</NavLink>
+            <NavLink to="/admin/subscriptions" className={linkClass}>Subscriptions</NavLink>
           </nav>
         </div>
 
@@ -36,6 +37,7 @@ export default function AdminLayout() {
             <NavLink to="/admin/orders" className={linkClass}>Orders</NavLink>
             <NavLink to="/admin/payments" className={linkClass}>Payments</NavLink>
             <NavLink to="/admin/customers" className={linkClass}>Customers</NavLink>
+            <NavLink to="/admin/subscriptions" className={linkClass}>Subscriptions</NavLink>
           </nav>
         </div>
       </header>

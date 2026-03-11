@@ -94,7 +94,7 @@ export default function CartPage() {
     navigate('/checkout')
   }
 
-  const CartItemRow = ({ image, name, plan, unitPrice, lineTotal, quantity, onQtyChange, onRemove }) => (
+  const CartItemRow = ({ image, name, plan, unitPrice, lineTotal, quantity, onQtyChange, onRemove, onSubscribe }) => (
     <div className="flex gap-5 sm:gap-6 py-6 border-b border-gray-100 last:border-0">
       {/* Image */}
       <div className="h-24 w-24 sm:h-32 sm:w-32 shrink-0 overflow-hidden rounded-xl bg-gray-50 border border-gray-100 relative group">
@@ -144,14 +144,24 @@ export default function CartPage() {
             </button>
           </div>
 
-          {/* Remove Button */}
-          <button
-            type="button"
-            onClick={onRemove}
-            className="text-sm font-semibold text-rose-500 hover:text-rose-700 transition-colors"
-          >
-            Remove
-          </button>
+          <div className="flex gap-4 items-center">
+            {/* Subscribe Button */}
+            <button
+              type="button"
+              onClick={onSubscribe}
+              className="text-sm font-semibold text-green-600 hover:text-green-800 transition-colors"
+            >
+              Subscribe
+            </button>
+            {/* Remove Button */}
+            <button
+              type="button"
+              onClick={onRemove}
+              className="text-sm font-semibold text-rose-500 hover:text-rose-700 transition-colors"
+            >
+              Remove
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -230,6 +240,7 @@ export default function CartPage() {
                         quantity={it.quantity}
                         onQtyChange={(v) => updateGuestQty(idx, v)}
                         onRemove={() => removeGuest(idx)}
+                        onSubscribe={() => navigate(`/subscribe/${it.product_id}`, { state: { product: snap } })}
                       />
                     )
                   })}
@@ -247,6 +258,7 @@ export default function CartPage() {
                       quantity={it.quantity}
                       onQtyChange={(v) => updateServerQty(it.id, v)}
                       onRemove={() => removeServerItem(it.id)}
+                      onSubscribe={() => navigate(`/subscribe/${it.product?.id}`, { state: { product: it.product } })}
                     />
                   ))}
                 </>
