@@ -1,4 +1,4 @@
-# <p align="center">🥛 EVER MILK</p>
+# <p align="center"> EVER MILK</p>
 <p align="center">
   <strong>The Ultra-Premium Milk Subscription & Delivery Evolution</strong>
 </p>
@@ -12,20 +12,20 @@
 
 ---
 
-## ⚡ Project Overview
+##  Project Overview
 
 **EVER MILK** isn't just a delivery service; it's a high-performance orchestration engine for fresh dairy logistics. Built with a robust **Django REST Framework** backend and a lightning-fast **React + Vite** frontend, it bridges the gap between farmhouse freshness and digital convenience.
 
-### 🌟 Core Capabilities
-- 🚀 **Automated Scheduling**: Adaptive delivery engine that generates schedules based on subscription logic.
-- 🔐 **Secure Auth Architecture**: Multi-layered JWT authentication for Users and Power-User Admins.
-- 📊 **Real-time Analytics**: High-fidelity dashboard for monitoring subscriptions, orders, and delivery metrics.
-- ⏸️ **Smart Pause/Resume**: Intelligent delivery postponement with automatic schedule recalibration.
-- 💳 **Transaction Integrity**: Atomic database transactions ensuring zero-loss order processing.
+###  Core Capabilities
+- **Automated Scheduling**: Adaptive delivery engine that generates schedules based on subscription logic.
+- **Secure Auth Architecture**: Multi-layered JWT authentication for Users and Power-User Admins.
+-  **Real-time Analytics**: High-fidelity dashboard for monitoring subscriptions, orders, and delivery metrics.
+- **Smart Pause/Resume**: Intelligent delivery postponement with automatic schedule recalibration.
+- **Transaction Integrity**: Atomic database transactions ensuring zero-loss order processing.
 
 ---
 
-## 🏗️ System Architecture & Logic Flows
+##  System Architecture & Logic Flows
 
 ### 1. 🛡️ Authentication & Authorization (Admin Layer)
 The system leverages a "Role-Based Secure Guard" pattern to ensure administrative actions are cryptographically verified.
@@ -110,9 +110,9 @@ sequenceDiagram
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
-### 📦 Installation Matrix
+###  Installation Matrix
 
 #### 🔹 Ground Control (Backend)
 ```bash
@@ -165,6 +165,3 @@ npm run dev
 
 ---
 
-<p align="center">
-  Developed with ❤️ by <strong>Antigravity AI</strong>
-</p>
