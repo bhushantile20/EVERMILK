@@ -89,9 +89,9 @@ sequenceDiagram
 
 ---
 
-## 🛠️ Tech Stack & Dependencies
+##  Tech Stack & Dependencies
 
-### 🎨 Frontend Excellence
+###  Frontend Excellence
 | Technology | Usage |
 | :--- | :--- |
 | **React 18** | Reconciler & Component Logic |
@@ -100,7 +100,7 @@ sequenceDiagram
 | **Framer Motion** | Micro-interactions & Anims |
 | **Recharts** | Business Intelligence Visualization |
 
-### ⚙️ Backend Engineering
+### Backend Engineering
 | Technology | Usage |
 | :--- | :--- |
 | **Django 5.0** | Core Meta-Framework |
