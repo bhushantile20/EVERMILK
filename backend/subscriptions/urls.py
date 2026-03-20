@@ -6,6 +6,8 @@ urlpatterns = [
     path('my/', views.my_subscriptions, name='my_subscriptions'),
     path('pause/', views.pause_subscription, name='pause_subscription'),
     path('resume/', views.resume_subscription, name='resume_subscription'),
+    path('<int:sub_id>/cancel/', views.cancel_subscription, name='cancel_subscription'),
+    path('<int:sub_id>/delete/', views.delete_subscription, name='delete_subscription'),
     path('<int:sub_id>/deliveries/', views.subscription_deliveries, name='subscription_deliveries'),
     
     # Admin URLs

@@ -165,3 +165,8 @@ npm run dev
 
 ---
 
+## 🚀 Deployment & CI/CD
+This project is configured for automated deployment to Azure. Any push to the `main` branch triggers a GitHub Actions workflow that:
+1. Builds the React frontend
+2. Updates the Django backend
+3. Restarts services via PM2 and Nginx
