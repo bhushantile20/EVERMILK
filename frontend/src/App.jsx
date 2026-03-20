@@ -9,6 +9,7 @@ import CheckoutPage from './pages/CheckoutPage'
 import OrdersPage from './pages/OrdersPage'
 import OrderDetailPage from './pages/OrderDetailPage'
 import SubscribePlan from './pages/SubscribePlan'
+import DashboardPage from './pages/DashboardPage'
 import NotFoundPage from './pages/NotFoundPage'
 import { RequireAdmin, RequireAuth } from './routes/guards'
 
@@ -37,6 +38,7 @@ export default function App() {
         <Route element={<RequireAuth />}>
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/subscribe/:id" element={<SubscribePlan />} />
+          <Route path="/dashboard" element={<OrdersPage />} />
           <Route path="/dashboard/orders" element={<OrdersPage />} />
           <Route path="/dashboard/orders/:id" element={<OrderDetailPage />} />
         </Route>

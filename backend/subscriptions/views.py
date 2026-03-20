@@ -171,6 +171,39 @@ def subscription_deliveries(request, sub_id):
     deliveries = DeliverySchedule.objects.filter(subscription=sub).order_by('delivery_date')
     return Response(DeliveryScheduleSerializer(deliveries, many=True).data)
 
+@api_view(['POST'])
+@permission_classes([permissions.IsAuthenticated])
+def cancel_subscription(request, sub_id):
+    sub = get_object_or_404(Subscription, id=sub_id, user=request.user)
+    if sub.status == 'cancelled':
+        return Response({'error': 'Subscription already cancelled'}, status=status.HTTP_400_BAD_REQUEST)
+        
+    reason = request.data.get('reason', 'User cancelled from dashboard')
+    
+    with transaction.atomic():
+        sub.status = 'cancelled'
+        sub.save()
+        
+        # Mark pending deliveries as skipped (effectively cancelled)
+        DeliverySchedule.objects.filter(
+            subscription=sub,
+            status='pending'
+        ).update(status='skipped')
+        
+        # Log the cancellation reason if there's a model for it? 
+        # For now, we just follow the pattern of the admin cancel but for the user.
+        
+    return Response({'message': 'Subscription cancelled successfully', 'subscription': SubscriptionSerializer(sub).data})
+
+@api_view(['DELETE'])
+@permission_classes([permissions.IsAuthenticated])
+def delete_subscription(request, sub_id):
+    sub = get_object_or_404(Subscription, id=sub_id, user=request.user)
+    # Only allow deleting if it's already cancelled? 
+    # Or just let them delete it if they own it.
+    sub.delete()
+    return Response({'message': 'Subscription permanently deleted'}, status=status.HTTP_204_NO_CONTENT)
+
 # --- ADMIN ENDPOINTS ---
 
 @api_view(['GET'])

@@ -12,7 +12,8 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.9.0",
     "axios": "^1.12.2",
-    "framer-motion": "^12.34.4",
+    "framer-motion": "^12.38.0",
+    "lucide-react": "^0.577.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-redux": "^9.2.0",

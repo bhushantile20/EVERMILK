@@ -1,4 +1,4 @@
-# <p align="center">🥛 EVER MILK</p>
+# <p align="center"> EVER MILK</p>
 <p align="center">
   <strong>The Ultra-Premium Milk Subscription & Delivery Evolution</strong>
 </p>
@@ -12,7 +12,7 @@
 
 ---
 
-## ⚡ Project Overview
+##  Project Overview
 
 **EVER MILK** isn't just a delivery service; it's a high-performance orchestration engine for fresh dairy logistics. Built with a robust **Django REST Framework** backend and a lightning-fast **React + Vite** frontend, it bridges the gap between farmhouse freshness and digital convenience.
 
@@ -110,7 +110,7 @@ sequenceDiagram
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### 📦 Installation Matrix
 
@@ -164,7 +164,3 @@ npm run dev
 ```
 
 ---
-
-<p align="center">
-  Developed with ❤️ by <strong>Antigravity AI</strong>
-</p>
