@@ -1,19 +1,15 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { 
   Calendar as CalendarIcon, 
-  Package, 
   Wallet, 
   ChevronLeft, 
   ChevronRight, 
   History, 
-  Settings, 
   Pause, 
   Play, 
-  Info,
-  CheckCircle2,
-  Clock
+  Info
 } from 'lucide-react'
 import { api } from '../app/apiClient'
 
