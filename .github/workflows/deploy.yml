@@ -57,7 +57,7 @@ jobs:
 
             export NODE_OPTIONS="--max-old-space-size=1024"
 
-            echo "VITE_API_BASE_URL=http://${{ secrets.SERVER_IP }}:8000" > .env
+            echo "VITE_API_BASE_URL=https://evermilk.bhushantile.online" > .env
 
             npm install
             npm run build
